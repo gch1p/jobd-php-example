@@ -1,0 +1,17 @@
+{
+  "name": "ch1p/jobd-php-example",
+  "description": "example usage of jobd and it's PHP client",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Evgeny Zinoviev",
+      "email": "me@ch1p.io"
+    }
+  ],
+  "require": {
+    "ch1p/jobd-client": "^1.5",
+    "ext-json": "*",
+    "ext-mysqli": "*"
+  }
+}

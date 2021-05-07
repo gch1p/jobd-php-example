@@ -1,0 +1,59 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "96d78551c8c7b7a22cb20daf8025e024",
+    "packages": [
+        {
+            "name": "ch1p/jobd-client",
+            "version": "1.5.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/gch1p/php-jobd-client.git",
+                "reference": "a3bb10feaea28fd54866dc9c4311a247a84a202c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/gch1p/php-jobd-client/zipball/a3bb10feaea28fd54866dc9c4311a247a84a202c",
+                "reference": "a3bb10feaea28fd54866dc9c4311a247a84a202c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-sockets": "*",
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "jobd\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "keywords": [
+                "job",
+                "jobd",
+                "queue"
+            ],
+            "support": {
+                "issues": "https://github.com/gch1p/php-jobd-client/issues",
+                "source": "https://github.com/gch1p/php-jobd-client/tree/v1.5.2"
+            },
+            "time": "2021-03-15T22:02:40+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.0.0"
+}
