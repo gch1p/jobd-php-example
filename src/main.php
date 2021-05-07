@@ -18,7 +18,7 @@ EOF;
 $cmd = $argv[1];
 $func = "cmd_{$cmd}";
 if (!function_exists($func)) {
-    echo red("command '".$cmd."' is not implement")."\n";
+    echo red("command '".$cmd."' is not implemented")."\n";
     exit(1);
 }
 
