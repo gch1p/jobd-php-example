@@ -82,6 +82,21 @@ class jobs
         return self::add($target, $name, $data, Job::STATUS_MANUAL);
     }
 
+    public static function sendSignal(int $job_id, int $signal, string $target)
+    {
+        $client = getJobdMaster();
+        $response = $client->sendSignal($job_id, $signal, $target);
+
+        // master request failed
+        if (($error = $response->getError()) !== null)
+            throw new Exception("jobd returned error: ".$error);
+
+        $data = $response->getData();
+        $client->close();
+
+        return $data[$job_id];
+    }
+
     /**
      * Run jobs with given ids and status=Job::STATUS_MANUAL and wait for results.
      *
@@ -198,10 +213,11 @@ class jobs
 
     /**
      * @param string|string[] $targets
+     * @throws \jobd\exceptions\JobdException
+     * @return bool
      */
-    public static function poke($targets)
+    public static function poke($targets): bool
     {
-
         $client = getJobdMaster();
 
         if (!is_array($targets))
@@ -248,7 +264,6 @@ class jobs
 
 class job_target
 {
-
     const any = "any";
 
     public static function high(int $server): string

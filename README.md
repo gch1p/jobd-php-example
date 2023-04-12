@@ -34,7 +34,11 @@ is stored in [`init.php`](src/init.php) as global constants. Adjust to your need
 
     ```
     jobd-master --config jobd-master.conf
+    ```
+    ```
     jobd --config jobd-1.conf
+    ```
+    ```
     jobd --config jobd-2.conf
     ```
    

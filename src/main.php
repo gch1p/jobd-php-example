@@ -10,19 +10,23 @@ Commands:
     test
     hello
     createfile
+    run_lrt
+    kill_lrt ID
 
 EOF;
     exit;
 }
 
-$cmd = $argv[1];
+array_shift($argv);
+$cmd = array_shift($argv);
+
 $func = "cmd_{$cmd}";
 if (!function_exists($func)) {
     echo red("command '".$cmd."' is not implemented")."\n";
     exit(1);
 }
 
-call_user_func($func);
+call_user_func($func, $argv);
 
 
 /** Commands */
@@ -90,4 +94,15 @@ function cmd_hello() {
 function cmd_createfile() {
     $file = input('Enter file name: ');
     jobs::add(job_target::any, jobs\CreateFile::class, ['file' => $file]);
+}
+
+function cmd_run_lrt() {
+    $ltr_id = jobs::add(job_target::low(1), jobs\LongRunningTask::class);
+    echo "id: $ltr_id\n";
+}
+
+function cmd_kill_lrt($argv) {
+    $id = $argv[0];
+    $result = jobs::sendSignal($id, 15, job_target::low(1));
+    var_dump($result);
 }

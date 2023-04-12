@@ -48,4 +48,13 @@ abstract class Job extends model {
 
     abstract public function run();
 
+    public function __construct(array $raw) {
+        parent::__construct($raw);
+
+        pcntl_async_signals(true);
+        pcntl_signal(SIGTERM, [$this, 'signalHandler']);
+        pcntl_signal(SIGINT, [$this, 'signalHandler']);
+    }
+
+    protected function signalHandler(int $signal) {}
 }

@@ -7,6 +7,8 @@ $job = null;
 
 register_shutdown_function(function() {
     global $job;
+    if ($job instanceof \jobd\exceptions\JobInterruptedException)
+        exit($job->getCode());
     if ($job !== true)
         exit(1);
 });
@@ -25,6 +27,9 @@ if ($job->status != Job::STATUS_RUNNING)
 try {
     if ($job->run() !== false)
         $job = true;
+} catch (\jobd\exceptions\JobInterruptedException $e) {
+    fprintf(STDERR, $e->getMessage()."\n");
+    $job = $e;
 } catch (Exception $e) {
     fprintf(STDERR, $e.'');
     exit(1);
