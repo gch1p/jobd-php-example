@@ -10,7 +10,7 @@
     }
   ],
   "require": {
-    "ch1p/jobd-client": "^1.5",
+    "ch1p/jobd-client": "^1.6.0",
     "ext-json": "*",
     "ext-mysqli": "*",
     "ext-pcntl": "*"
