@@ -51,9 +51,11 @@ abstract class Job extends model {
     public function __construct(array $raw) {
         parent::__construct($raw);
 
-        pcntl_async_signals(true);
-        pcntl_signal(SIGTERM, [$this, 'signalHandler']);
-        pcntl_signal(SIGINT, [$this, 'signalHandler']);
+        if (PHP_SAPI === 'cli') {
+            pcntl_async_signals(true);
+            pcntl_signal(SIGTERM, [$this, 'signalHandler']);
+            pcntl_signal(SIGINT, [$this, 'signalHandler']);
+        }
     }
 
     protected function signalHandler(int $signal) {}
